@@ -15,7 +15,7 @@ these are needed regardless of which modules you use:
 
 - [Quickshell](https://quickshell.outfoxxed.me/) + Qt 6
 - [Hyprland](https://hyprland.org/)
-- a [Nerd Font](https://www.nerdfonts.com/) (i use Hack Nerd Font — swap it in the QML files if you prefer another)
+- a [Nerd Font](https://www.nerdfonts.com/) (swap it in the QML files if you prefer another)
 
 optional, depending on which modules you use:
 
