@@ -11,7 +11,7 @@ import Quickshell.Services.Pipewire
 Scope {
     id: root
     property var theme: DefaultTheme {}
-    property string font: "Monaspace Xenon Var"
+    property string font: "JetBrainsMono Nerd Font"
     property bool barVisible: true
 
     // MPRIS active player
@@ -98,7 +98,7 @@ Scope {
                 right: true
             }
 
-            implicitHeight: 36
+            implicitHeight: 16
             color: root.theme.bgBase
 
             Item {
@@ -111,25 +111,25 @@ Scope {
                     id: leftSection
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
-                    spacing: 10
+                    spacing: 6
 
                     // Time
                     Rectangle {
-                        height: 26
-                        width: timeDate.width + 16
+                        height: 12
+                        width: timeDate.width + 12
                         radius: 12
                         color: root.theme.bgSurface
 
                         Row {
                             id: timeDate
                             anchors.centerIn: parent
-                            spacing: 8
+                            spacing: 6
 
                             Text {
                                 anchors.verticalCenter: parent.verticalCenter
                                 text: ""
                                 color: root.theme.accentPrimary
-                                font.pixelSize: 14
+                                font.pixelSize: 8
                                 font.family: root.font
                             }
 
@@ -137,7 +137,7 @@ Scope {
                                 anchors.verticalCenter: parent.verticalCenter
                                 text: Time.timeString
                                 color: root.theme.textPrimary
-                                font.pixelSize: 14
+                                font.pixelSize: 8
                                 font.family: root.font
                             }
 
@@ -145,7 +145,7 @@ Scope {
                                 anchors.verticalCenter: parent.verticalCenter
                                 text: Time.dateString
                                 color: root.theme.textSecondary
-                                font.pixelSize: 14
+                                font.pixelSize: 8
                                 font.family: root.font
                             }
                         }
@@ -153,7 +153,7 @@ Scope {
 
                     // Workspaces
                     Row {
-                        spacing: 6
+                        spacing: 3
 
                         Repeater {
                             model: Hyprland.workspaces
@@ -166,8 +166,8 @@ Scope {
                                 Accessible.role: Accessible.Button
                                 Accessible.name: "Workspace " + modelData.id + (modelData.focused ? ", active" : "") + (modelData.urgent ? ", urgent" : "")
 
-                                width: modelData.focused ? 32 : 24
-                                height: 26
+                                width: modelData.focused ? 16 : 14
+                                height: 12
                                 radius: 12
                                 color: modelData.focused ? root.theme.accentPrimary : modelData.urgent && urgentBlink ? root.theme.accentRed : root.theme.bgSurface
 
@@ -205,7 +205,7 @@ Scope {
                                     anchors.centerIn: parent
                                     text: wsPill.modelData.id
                                     color: wsPill.modelData.focused ? root.theme.bgBase : root.theme.textPrimary
-                                    font.pixelSize: 14
+                                    font.pixelSize: 8
                                     font.family: root.font
                                     font.bold: wsPill.modelData.focused
                                 }
@@ -226,7 +226,7 @@ Scope {
 
                     // Now Playing
                     Rectangle {
-                        height: 26
+                        height: 12
                         width: nowPlayingContent.width + 16
                         radius: 12
                         color: root.theme.bgSurface
@@ -252,7 +252,7 @@ Scope {
                                 anchors.verticalCenter: parent.verticalCenter
                                 text: root.activePlayer && root.activePlayer.isPlaying ? "󰐊" : "󰏤"
                                 color: root.theme.accentPrimary
-                                font.pixelSize: 18
+                                font.pixelSize: 10
                                 font.family: root.font
                             }
 
@@ -266,7 +266,7 @@ Scope {
                                     return artist ? artist + " - " + title : title;
                                 }
                                 color: root.theme.textPrimary
-                                font.pixelSize: 14
+                                font.pixelSize: 8
                                 font.family: root.font
                                 elide: Text.ElideRight
                                 width: Math.min(implicitWidth, 200)
@@ -292,7 +292,7 @@ Scope {
                         Accessible.name: "Active window: " + text
                         text: Hyprland.activeToplevel ? Hyprland.activeToplevel.title : ""
                         color: root.theme.textPrimary
-                        font.pixelSize: 14
+                        font.pixelSize: 8
                         font.family: root.font
                         elide: Text.ElideRight
                         width: Math.min(implicitWidth, parent.width)
@@ -305,12 +305,12 @@ Scope {
                     id: rightSection
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
-                    spacing: 8
+                    spacing: 6
 
                     // Volume
                     Rectangle {
-                        height: 26
-                        width: volContent.width + 12
+                        height: 12
+                        width: volContent.width + 10
                         radius: 12
                         color: root.theme.bgSurface
 
@@ -347,7 +347,7 @@ Scope {
                                         return root.theme.textMuted;
                                     return root.theme.accentPrimary;
                                 }
-                                font.pixelSize: 18
+                                font.pixelSize: 12
                                 font.family: root.font
                             }
 
@@ -362,7 +362,7 @@ Scope {
                                     return Math.round(sink.audio.volume * 100) + "%";
                                 }
                                 color: root.theme.textPrimary
-                                font.pixelSize: 14
+                                font.pixelSize: 8
                                 font.family: root.font
                             }
                         }
@@ -388,8 +388,8 @@ Scope {
 
                     // Brightness
                     Rectangle {
-                        height: 26
-                        width: brightContent.width + 12
+                        height: 12
+                        width: brightContent.width + 10
                         radius: 12
                         color: root.theme.bgSurface
                         visible: brightnessFile.path !== ""
@@ -406,7 +406,7 @@ Scope {
                                 anchors.verticalCenter: parent.verticalCenter
                                 text: "󰃠"
                                 color: root.theme.accentOrange
-                                font.pixelSize: 18
+                                font.pixelSize: 10
                                 font.family: root.font
                             }
 
@@ -414,7 +414,7 @@ Scope {
                                 anchors.verticalCenter: parent.verticalCenter
                                 text: Math.round(root.brightnessValue * 100) + "%"
                                 color: root.theme.textPrimary
-                                font.pixelSize: 14
+                                font.pixelSize: 8
                                 font.family: root.font
                             }
                         }
@@ -443,7 +443,7 @@ Scope {
                             return root.theme.batteryCritical;
                         }
 
-                        spacing: 4
+                        spacing: 6
 
                         // // CPU
                         // Rectangle {
@@ -463,7 +463,7 @@ Scope {
                         //             anchors.verticalCenter: parent.verticalCenter
                         //             text: "󰻠"
                         //             color: root.theme.accentOrange
-                        //             font.pixelSize: 14
+                        //             font.pixelSize: 8
                         //             font.family: root.font
                         //         }
                         //         Text {
@@ -478,8 +478,8 @@ Scope {
 
                         // Network
                         Rectangle {
-                            height: 26
-                            width: netContent.width + 12
+                            height: 12
+                            width: netContent.width + 10
                             radius: 12
                             color: root.theme.bgSurface
                             Accessible.role: Accessible.StaticText
@@ -506,14 +506,14 @@ Scope {
                                         return "󰖪";
                                     }
                                     color: SystemInfo.networkType === "disconnected" ? root.theme.textMuted : root.theme.accentGreen
-                                    font.pixelSize: 18
+                                    font.pixelSize: 10
                                     font.family: root.font
                                 }
                                 Text {
                                     anchors.verticalCenter: parent.verticalCenter
                                     text: SystemInfo.networkInfo
                                     color: root.theme.textPrimary
-                                    font.pixelSize: 14
+                                    font.pixelSize: 8
                                     font.family: root.font
                                 }
                             }
@@ -521,8 +521,8 @@ Scope {
 
                         // Battery
                         Rectangle {
-                            height: 26
-                            width: battContent.width + 12
+                            height: 12
+                            width: battContent.width + 10
                             radius: 12
                             color: root.theme.bgSurface
                             Accessible.role: Accessible.StaticText
@@ -537,14 +537,14 @@ Scope {
                                     anchors.verticalCenter: parent.verticalCenter
                                     text: SystemInfo.batteryIcon
                                     color: sysInfo.batteryColor
-                                    font.pixelSize: 18
+                                    font.pixelSize: 10
                                     font.family: root.font
                                 }
                                 Text {
                                     anchors.verticalCenter: parent.verticalCenter
                                     text: SystemInfo.batteryLevel
                                     color: root.theme.textPrimary
-                                    font.pixelSize: 14
+                                    font.pixelSize: 8
                                     font.family: root.font
                                 }
                             }
@@ -552,8 +552,8 @@ Scope {
 
                         // Power profile
                         Rectangle {
-                            height: 26
-                            width: powContent.width + 12
+                            height: 12
+                            width: powContent.width + 10
                             radius: 12
                             color: root.theme.bgSurface
                             Accessible.role: Accessible.StaticText
@@ -568,22 +568,22 @@ Scope {
                                     anchors.verticalCenter: parent.verticalCenter
                                     text: SystemInfo.powerProfileIcon
                                     color: SystemInfo.powerColor
-                                    font.pixelSize: 18
+                                    font.pixelSize: 10
                                     font.family: root.font
                                 }
                                 Text {
                                     anchors.verticalCenter: parent.verticalCenter
                                     text: SystemInfo.powerProfile
                                     color: root.theme.textPrimary
-                                    font.pixelSize: 14
+                                    font.pixelSize: 8
                                     font.family: root.font
                                 }
                             }
                         }
                         // Keyboard layout
                         Rectangle {
-                            height: 26
-                            width: keyContent.width + 12
+                            height: 12
+                            width: keyContent.width + 10
                             radius: 12
                             color: root.theme.bgSurface
                             Accessible.role: Accessible.StaticText
@@ -598,20 +598,20 @@ Scope {
                                 //     anchors.verticalCenter: parent.verticalCenter
                                 //     text: "󰌌"
                                 //     color: black
-                                //     font.pixelSize: 18
+                                //     font.pixelSize: 10
                                 //     font.family: root.font
                                 // }
                                 Image {
                                     source: SystemInfo.keyboardLayoutFlag
-                                    width: 22
-                                    height: 22
+                                    width: 13
+                                    height: 13
                                     fillMode: Image.PreserveAspectFit
                                 }
                                 Text {
                                     anchors.verticalCenter: parent.verticalCenter
                                     text: SystemInfo.keyboardLayout
                                     color: root.theme.textPrimary
-                                    font.pixelSize: 14
+                                    font.pixelSize: 8
                                     font.family: root.font
                                 }
                             }
@@ -634,7 +634,7 @@ Scope {
                         //             anchors.verticalCenter: parent.verticalCenter
                         //             text: "󰔏"
                         //             color: root.theme.accentRed
-                        //             font.pixelSize: 14
+                        //             font.pixelSize: 8
                         //             font.family: root.font
                         //         }
                         //         Text {
@@ -653,7 +653,7 @@ Scope {
                     // https://github.com/quickshell-mirror/quickshell/issues/26
                     // https://github.com/quickshell-mirror/quickshell/pull/777
                     Rectangle {
-                        implicitHeight: 26
+                        implicitHeight: 12
                         implicitWidth: trayIcons.implicitWidth + 4
                         radius: 12
                         color: root.theme.bgSurface
@@ -673,8 +673,8 @@ Scope {
                                     Accessible.role: Accessible.Button
                                     Accessible.name: modelData.tooltipTitle || modelData.title || "System tray item"
 
-                                    Layout.preferredWidth: 24
-                                    Layout.preferredHeight: 24
+                                    Layout.preferredWidth: 14
+                                    Layout.preferredHeight: 14
 
                                     acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
 
@@ -693,7 +693,7 @@ Scope {
                                     IconImage {
                                         anchors.centerIn: parent
                                         source: trayDelegate.modelData.icon
-                                        implicitSize: 16
+                                        implicitSize: 12
                                     }
 
                                     QsMenuAnchor {

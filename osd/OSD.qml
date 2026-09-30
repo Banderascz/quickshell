@@ -8,7 +8,7 @@ import QtQuick.Layouts
 Scope {
     id: root
     property var theme: DefaultTheme {}
-    property string font: "Monaspace Xenon Var"
+    property string font: "JetBrainsMono Nerd Font"
 
     property bool showVolume: false
     property bool showBrightness: false
@@ -120,19 +120,19 @@ Scope {
                 bottom: true
             }
 
-            implicitWidth: 70
+            implicitWidth: 60
 
             Column {
                 anchors.right: parent.right
-                anchors.rightMargin: 10
+                anchors.rightMargin: 4
                 anchors.verticalCenter: parent.verticalCenter
-                spacing: 12
+                spacing: 6
 
                 // Volume pill — vertical
                 Rectangle {
                     id: volumePill
-                    width: 40
-                    height: 250
+                    width: 20
+                    height: 120
                     radius: 25
                     color: root.theme.bgBase
                     border.color: root.theme.bgBorder
@@ -150,16 +150,16 @@ Scope {
 
                     ColumnLayout {
                         anchors.fill: parent
-                        anchors.topMargin: 12
-                        anchors.bottomMargin: 12
+                        anchors.topMargin: 8
+                        anchors.bottomMargin: 8
                         anchors.leftMargin: 0
                         anchors.rightMargin: 0
-                        spacing: 8
+                        spacing: 6
 
                         Text {
                             text: root.volumeMuted ? "Mute" : Math.round(root.volumeValue * 100) + "%"
                             color: root.theme.textSecondary
-                            font.pixelSize: 14
+                            font.pixelSize: 8
                             font.family: root.font
                             Layout.alignment: Qt.AlignHCenter
                         }
@@ -167,7 +167,7 @@ Scope {
                         Rectangle {
                             Layout.fillHeight: true
                             Layout.alignment: Qt.AlignHCenter
-                            width: 8
+                            width: 6
                             radius: 4
                             color: root.theme.bgSurface
                             border.color: root.theme.bgBorder
@@ -203,7 +203,7 @@ Scope {
                                 return "󰕾";
                             }
                             color: root.volumeMuted ? root.theme.textMuted : root.theme.accentPrimary
-                            font.pixelSize: 28
+                            font.pixelSize: 10
                             font.family: root.font
                             Layout.alignment: Qt.AlignHCenter
                         }
@@ -213,8 +213,8 @@ Scope {
                 // Brightness pill — vertical
                 Rectangle {
                     id: brightnessPill
-                    width: 40
-                    height: 250
+                    width: 20
+                    height: 120
                     radius: 25
                     color: root.theme.bgBase
                     border.color: root.theme.bgBorder
@@ -232,16 +232,16 @@ Scope {
 
                     ColumnLayout {
                         anchors.fill: parent
-                        anchors.topMargin: 12
-                        anchors.bottomMargin: 12
+                        anchors.topMargin: 8
+                        anchors.bottomMargin: 8
                         anchors.leftMargin: 0
                         anchors.rightMargin: 0
-                        spacing: 8
+                        spacing: 6
 
                         Text {
                             text: Math.round(root.brightnessValue * 100) + "%"
                             color: root.theme.textSecondary
-                            font.pixelSize: 14
+                            font.pixelSize: 8
                             font.family: root.font
                             Layout.alignment: Qt.AlignHCenter
                         }
@@ -249,7 +249,7 @@ Scope {
                         Rectangle {
                             Layout.fillHeight: true
                             Layout.alignment: Qt.AlignHCenter
-                            width: 8
+                            width: 6
                             radius: 4
                             color: root.theme.bgSurface
                             border.color: root.theme.bgBorder
@@ -277,7 +277,7 @@ Scope {
                         Text {
                             text: "󰃠"
                             color: root.theme.accentOrange
-                            font.pixelSize: 28
+                            font.pixelSize: 10
                             font.family: root.font
                             Layout.alignment: Qt.AlignHCenter
                         }
