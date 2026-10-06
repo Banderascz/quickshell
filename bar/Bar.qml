@@ -502,7 +502,16 @@ Scope {
                                         if (SystemInfo.networkType === "ethernet")
                                             return "󰈀";
                                         if (SystemInfo.networkType === "wifi")
-                                            return "󰖩";
+                                            if (SystemInfo.networkStrength >= 80 && SystemInfo.networkStrength <= 100)
+                                                return "󰤨";
+                                            else if (SystemInfo.networkStrength >= 60 && SystemInfo.networkStrength < 80)
+                                                return "󰤥";
+                                            else if (SystemInfo.networkStrength >= 40 && SystemInfo.networkStrength < 60)
+                                                return "󰤢";
+                                            else if (SystemInfo.networkStrength >= 20 && SystemInfo.networkStrength < 40)
+                                                return "󰤟";
+                                            else if (SystemInfo.networkStrength >= 0 && SystemInfo.networkStrength < 20)
+                                                return "󰤯";
                                         return "󰖪";
                                     }
                                     color: SystemInfo.networkType === "disconnected" ? root.theme.textMuted : root.theme.accentGreen

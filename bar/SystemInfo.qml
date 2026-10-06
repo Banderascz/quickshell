@@ -11,6 +11,7 @@ Singleton {
     // property string memoryUsage: "0%"
     property string networkInfo: "Disconnected"
     property string networkType: "disconnected"
+    property int networkStrength: 0
     property int batteryLevelRaw: 0
     property string batteryLevel: "0%"
     property string batteryIcon: "󰂎"
@@ -112,7 +113,8 @@ Singleton {
         wifi=$(echo "$dev" | grep '^wifi:connected')
         if [ -n "$wifi" ]; then
             ssid=$(echo "$wifi" | cut -d: -f3-)
-            echo "wifi:$ssid"
+            strength=$(nmcli dev wifi list | grep "*" | awk '{print $10}')
+            echo "wifi:$ssid:$strength"
             exit
         fi
 
@@ -126,8 +128,10 @@ Singleton {
                 const result = text.trim();
 
                 const parts = result.split(":");
+
                 root.networkType = parts[0];
-                root.networkInfo = parts.slice(1).join(":") || "Disconnected";
+                root.networkInfo = parts[1] || "Disconnected";
+                root.networkStrength = parts[2] || "-1";
             }
         }
     }
