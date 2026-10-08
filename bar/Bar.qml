@@ -67,6 +67,11 @@ Scope {
     }
 
     Process {
+        id: networkmgr
+        running: false
+    }
+
+    Process {
         id: backlightDiscovery
         command: ["sh", "-c", "p=$(ls -d /sys/class/backlight/*/brightness 2>/dev/null | head -1); [ -n \"$p\" ] && echo \"$p\" && cat \"${p%brightness}max_brightness\""]
         running: true
@@ -524,6 +529,14 @@ Scope {
                                     color: root.theme.textPrimary
                                     font.pixelSize: 8
                                     font.family: root.font
+                                }
+                            }
+                            MouseArea {
+                                anchors.fill: parent
+                                cursorShape: Qt.PointingHandCursor
+                                onClicked: {
+                                    networkmgr.command = ["kitty", "nmtui"];
+                                    networkmgr.running = true;
                                 }
                             }
                         }
