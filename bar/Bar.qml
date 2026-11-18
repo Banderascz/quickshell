@@ -507,7 +507,7 @@ Scope {
                                         if (SystemInfo.networkType === "ethernet")
                                             return "󰈀";
                                         if (SystemInfo.networkType === "wifi")
-                                            if (SystemInfo.networkStrength >= 80 && SystemInfo.networkStrength <= 100)
+                                            if (SystemInfo.networkStrength >= 80)
                                                 return "󰤨";
                                             else if (SystemInfo.networkStrength >= 60 && SystemInfo.networkStrength < 80)
                                                 return "󰤥";

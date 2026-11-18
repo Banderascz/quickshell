@@ -113,7 +113,7 @@ Singleton {
         wifi=$(echo "$dev" | grep '^wifi:connected')
         if [ -n "$wifi" ]; then
             ssid=$(echo "$wifi" | cut -d: -f3-)
-            strength=$(nmcli dev wifi list | grep "*" | awk '{print $10}')
+            strength=$(nmcli -t -f IN-USE,SIGNAL dev wifi | awk -F: '$1=="*" {print $2}' )
             echo "wifi:$ssid:$strength"
             exit
         fi
